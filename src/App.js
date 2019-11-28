@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Card, Button, Form} from 'react-bootstrap';
+import { Container, Col, Row, Button} from 'react-bootstrap';
 import uuid from 'uuid/v4'
+import Cronometro from './components/Cronometro';
 
 class App extends Component{
   constructor(){
@@ -137,62 +138,36 @@ class App extends Component{
     }
 
     render(){
+      const { items } = this.state;
       return(
         <Container>
           <h1 className="text-center">CRONOMETROS</h1>
           <hr/>
           <Row>
-            {this.state.items.map((item, index) =>
-              <Col md={4} key={item.id}>
-                <Card className="card text-center" border="primary">
-                  <Card.Header as="h2">
-                    {this.getHour(item.time)}:{this.getMinutes(item.time)}:{this.getSeconds(item.time)}
-                  </Card.Header>
-                  {item.update === false ?
-                    <Card.Body>
-                      <i className="far fa-edit" onClick={() => this.updateItem(index)}></i>
-                      <i className="far fa-trash-alt" onClick={() => this._remove(index)}></i>
-                      <Card.Title as="h1">{item.task}</Card.Title>
-                      <Card.Text>{item.project}</Card.Text>
-                      { item.optn === "start" ?
-                        <Button variant="info" size="lg" onClick={() => this.handleClickStart(item, index)}>{item.optn}</Button>
-                        :
-                        <Button variant="warning" size="lg" onClick={() => this.handleClickStop(item , index)}>{item.optn}</Button>
-                      }
-                    </Card.Body> :
-                    <Card.Body>
-                      <Form onSubmit={() => this._save(item)}>
-                        <Form.Group>
-                          <Form.Control
-                            type="text"
-                            name="task"
-                            placeholder={item.task ? item.task : "Ingresa Tarea"}
-                            onChange={this.onInputChange}
-                            required/>
-                        </Form.Group>
-
-                        <Form.Group>
-                          <Form.Control
-                            type="text"
-                            name="project"
-                            placeholder={item.project ? item.project : "Ingresa Proyecto"}
-                            onChange={this.onInputChange}
-                            required/>
-                        </Form.Group>
-                          <Button variant="outline-success" type="submit">
-                            {item.newItem === false ? "Update" : "Create"}
-                          </Button>
-                        <Button variant="outline-danger" onClick={() => this.noUpdateItem(index)}>Cancelar</Button>
-                      </Form>
-                    </Card.Body>
-                  }
-                </Card>
-              </Col>
-            )}
-
+            {items.map((item, index) => {
+              return(
+                <Col md={4}>
+                  <Cronometro
+                    item={item}
+                    index={index}
+                    second={this.getSeconds(item.time)}
+                    minute={this.getMinutes(item.time)}
+                    hour={this.getHour(item.time)}
+                    onUpdate={() => this.updateItem(index)}
+                    noUpdate={() => this.noUpdateItem(index)}
+                    onInputChange={this.onInputChange}
+                    remove={() => this._remove(index)}
+                    save={() => this._save(item)}
+                    onStart={() => this.handleClickStart(item, index)}
+                    onStop={() => this.handleClickStop(item , index)}
+                    onSubmit={() => this._save(item)}
+                    />
+                </Col>
+              )
+            })}
           </Row>
-            <hr/>
-              <Col md={{span:4, offset:5}}><Button variant="success" onClick={this._add.bind(this)}>Agregar Cronometro</Button></Col>
+          <hr/>
+          <Col md={{span:4, offset:5}}><Button variant="success" onClick={this._add.bind(this)}>Agregar Cronometro</Button></Col>
         </Container>
       )
     }
