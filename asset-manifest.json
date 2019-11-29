@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Timers-React/static/css/main.877259fa.chunk.css",
+    "main.js": "/Timers-React/static/js/main.bf72dc04.chunk.js",
+    "main.js.map": "/Timers-React/static/js/main.bf72dc04.chunk.js.map",
+    "runtime-main.js": "/Timers-React/static/js/runtime-main.6a1bfc3e.js",
+    "runtime-main.js.map": "/Timers-React/static/js/runtime-main.6a1bfc3e.js.map",
+    "static/css/2.b0bb7f2c.chunk.css": "/Timers-React/static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.801fafb5.chunk.js": "/Timers-React/static/js/2.801fafb5.chunk.js",
+    "static/js/2.801fafb5.chunk.js.map": "/Timers-React/static/js/2.801fafb5.chunk.js.map",
+    "index.html": "/Timers-React/index.html",
+    "precache-manifest.44773bd6ee707bb28d67cdd9f4f7ab91.js": "/Timers-React/precache-manifest.44773bd6ee707bb28d67cdd9f4f7ab91.js",
+    "service-worker.js": "/Timers-React/service-worker.js",
+    "static/css/2.b0bb7f2c.chunk.css.map": "/Timers-React/static/css/2.b0bb7f2c.chunk.css.map",
+    "static/css/main.877259fa.chunk.css.map": "/Timers-React/static/css/main.877259fa.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6a1bfc3e.js",
+    "static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.801fafb5.chunk.js",
+    "static/css/main.877259fa.chunk.css",
+    "static/js/main.bf72dc04.chunk.js"
+  ]
+}
